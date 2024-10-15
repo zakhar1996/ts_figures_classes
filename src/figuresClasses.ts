@@ -16,10 +16,16 @@ export class Triangle implements Figure {
     public b: number,
     public c: number,
   ) {
-    if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error(
-        'The side of the figure cannot be less than or equal to zero',
-      );
+    if (a <= 0) {
+      throw new Error('Side "a" cannot be less than or equal to zero');
+    }
+
+    if (b <= 0) {
+      throw new Error('Side "b" cannot be less than or equal to zero');
+    }
+
+    if (c <= 0) {
+      throw new Error('Side "c" cannot be less than or equal to zero');
     }
 
     const maxLength: number = Math.max(a, b, c);
@@ -51,7 +57,8 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('The radius of the circle cannot be zero or less');
+      throw new Error(`
+        The radius of the circle is ${radius}, which cannot be zero or less.`);
     }
   }
 
@@ -68,9 +75,15 @@ export class Rectangle implements Figure {
     public width: number,
     public height: number,
   ) {
-    if (width <= 0 || height <= 0) {
+    if (width <= 0) {
       throw new Error(
-        'The side of the figure cannot be less than or equal to zero',
+        `The width of the rectangle cannot be less than or equal to zero: ${width}`,
+      );
+    }
+
+    if (height <= 0) {
+      throw new Error(
+        `The height of the rectangle cannot be less than or equal to zero: ${height}`,
       );
     }
   }
